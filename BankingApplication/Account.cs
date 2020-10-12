@@ -49,7 +49,7 @@ namespace BankingApplication
         {
             double month_interest_rate = (annual_interest_rate / 12);
             double month_interest = month_current_balance * month_interest_rate;
-            month_current_balance = month_current_balance + month_interest;
+            month_current_balance += month_interest;
 
         }
 
@@ -64,18 +64,20 @@ namespace BankingApplication
             month_total_deposits = 0;
 
             month_service_charge = 0;
-
-            double percentDifference = ((month_current_balance - month_start_balance) / month_start_balance) * 100;
+            double percentDifference = ((Month_current_balance - Month_start_balance) / month_start_balance);
+            string formattedPD = string.Format("{0:0.00}%", percentDifference*100);
 
             double month_interest_rate = (annual_interest_rate / 12);
-            double month_interest = month_current_balance * month_interest_rate;
+            string formattedMIR = string.Format("{0:0.00}%", month_interest_rate*100);
+            double month_interest = Month_current_balance * month_interest_rate;
+            string formattedMI = string.Format("{0:C}", month_interest);
 
-            string balance = "Previous balance: " + month_start_balance +
-                "\nNew balance: " + month_current_balance;
+            string balance = "Previous balance: " + string.Format("{0:C}", Month_start_balance) +
+                "\nNew balance: " + string.Format("{0:C}",Month_current_balance);
             
-            string percent = "% difference between Previous and Present balance: "+percentDifference;
+            string percent = "% difference between Previous and Present balance: "+formattedPD;
 
-            string interestPay = "Month interest (" + month_interest_rate * 100 + "%) paid: " + month_interest;
+            string interestPay = "Month's interest rate (" + formattedMIR + ") paid: " + formattedMI;
 
             string str = string.Format("{0}\n{1}\n{2}\n",balance,percent,interestPay);
             return str;

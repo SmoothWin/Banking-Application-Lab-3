@@ -51,6 +51,7 @@ namespace BankingApplication
             if (stat == Status.inactive)
             {
                 Console.WriteLine("You need to have more than $25 to be able to withdraw");
+                Console.WriteLine("Enter 0 to withdraw nothing");
             }
             else
             {

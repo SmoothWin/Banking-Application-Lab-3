@@ -48,9 +48,12 @@
     <Compile Include="GlobalSavingsAccount.cs" />
     <Compile Include="IAccount.cs" />
     <Compile Include="IExchangeable.cs" />
+    <Compile Include="NegativeNumberException.cs" />
+    <Compile Include="NotNumberException.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SavingsAccount.cs" />
+    <Compile Include="WrongMenuChoiceException.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
