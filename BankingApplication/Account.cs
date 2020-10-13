@@ -60,43 +60,6 @@ namespace BankingApplication
             return percentDifference;
         }
 
-        public static string ToNAMoneyFormat(this double n, Boolean tf)
-        {
-            double theMoney=n;
-            if (tf == true)
-            {
-                if (theMoney < 0)
-                {
-                    theMoney *= -1;
-                    theMoney = Math.Round(n, 2, MidpointRounding.AwayFromZero); //Rounds the number accordingly
-                    string str = string.Format("({0:C})", theMoney);
-                    return str;
-                }
-                else
-                {
-                    theMoney = Math.Round(n, 2, MidpointRounding.AwayFromZero); //Rounds the number accordingly
-                    string str = string.Format("{0:C}", theMoney);
-                    return str;
-                }
-            }
-            else
-            {
-                if (theMoney < 0)
-                {
-                    theMoney *= 1;
-                    theMoney = Math.Round(n, 2); //Rounds the number downwards
-                    string str = string.Format("({0:C})", theMoney);
-                    return str;
-                }
-                else 
-                {
-                    theMoney = Math.Round(n, 2); //Rounds the number downwards
-                    string str = string.Format("{0:C}", theMoney);
-                    return str;
-                }
-            }
-        }
-
         public virtual string CloseAndReport()
         {
             month_current_balance -= month_service_charge;
@@ -105,10 +68,10 @@ namespace BankingApplication
             double month_interest_rate = (annual_interest_rate / 12);
             string formattedMIR = string.Format("{0:0.00}%", month_interest_rate*100);
             double month_interest = Month_current_balance * month_interest_rate;
-            string formattedMI = string.Format("{0:C}", month_interest);
+            string formattedMI = month_interest.ToNAMoneyFormat(true);
 
-            string balance = "Previous balance: " + string.Format("{0:C}", Month_start_balance) +
-                "\nNew balance: " + string.Format("{0:C}",Month_current_balance);
+            string balance = "Previous balance: " + Month_start_balance.ToNAMoneyFormat(true) +
+                "\nNew balance: " + Month_current_balance.ToNAMoneyFormat(true);
 
             string percent = "% difference between Previous and Present balance: " + PercentChange();
 

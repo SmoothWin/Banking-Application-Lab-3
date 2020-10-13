@@ -61,7 +61,7 @@ namespace BankingApplication
                                     Console.WriteLine("| R: Return to Bank Menu    |");
                                     Console.WriteLine("|                           |");
                                     Console.WriteLine("|___________________________|");
-                                    string balance = string.Format("{0:C}", sa.Month_current_balance);
+                                    string balance = sa.Month_current_balance.ToNAMoneyFormat(true);
                                     Console.WriteLine("Current Balance: " + balance);
                                     letterChoice = Console.ReadLine();
 
@@ -86,8 +86,8 @@ namespace BankingApplication
                                                     }
                                                     else
                                                     {
-                                                        sa.MakeDeposit(Math.Round(deposit, 2, MidpointRounding.ToEven));
-                                                        Console.WriteLine("Successfully deposited " + string.Format("{0:C}", deposit));
+                                                        sa.MakeDeposit(Math.Round(deposit,2,MidpointRounding.AwayFromZero));
+                                                        Console.WriteLine("Successfully deposited " + deposit.ToNAMoneyFormat(true));
                                                         goodDeposit = true;
                                                     }
                                                 }
@@ -127,7 +127,7 @@ namespace BankingApplication
                                                     }
                                                     else
                                                     {
-                                                        sa.MakeWithdraw(Math.Round(withdraw, 2, MidpointRounding.ToEven));
+                                                        sa.MakeWithdraw(Math.Round(withdraw, 2, MidpointRounding.AwayFromZero));
                                                         goodWithdraw = true;
                                                     }
                                                 }
@@ -209,7 +209,7 @@ namespace BankingApplication
                                                     }
                                                     else
                                                     {
-                                                        ca.MakeDeposit(Math.Round(deposit, 2, MidpointRounding.ToEven));
+                                                        ca.MakeDeposit(Math.Round(deposit, 2, MidpointRounding.AwayFromZero));
                                                         Console.WriteLine("Successfully deposited " + string.Format("{0:C}", deposit));
                                                         goodDeposit = true;
                                                     }
@@ -251,7 +251,7 @@ namespace BankingApplication
 
                                                     else
                                                     {
-                                                        ca.MakeWithdraw(Math.Round(withdraw, 2, MidpointRounding.ToEven));
+                                                        ca.MakeWithdraw(Math.Round(withdraw, 2, MidpointRounding.AwayFromZero));
                                                         goodWithdraw = true;
                                                     }
                                                 }
@@ -333,7 +333,7 @@ namespace BankingApplication
                                                     }
                                                     else
                                                     {
-                                                        gsa.MakeDeposit(Math.Round(deposit, 2, MidpointRounding.ToEven));
+                                                        gsa.MakeDeposit(Math.Round(deposit, 2, MidpointRounding.AwayFromZero));
                                                         Console.WriteLine("Successfully deposited " + string.Format("{0:C}", deposit));
                                                         goodDeposit = true;
                                                     }
@@ -375,7 +375,7 @@ namespace BankingApplication
 
                                                     else
                                                     {
-                                                        gsa.MakeWithdraw(Math.Round(withdraw, 2, MidpointRounding.ToEven));
+                                                        gsa.MakeWithdraw(Math.Round(withdraw, 2, MidpointRounding.AwayFromZero));
                                                         goodWithdraw = true;
                                                     }
                                                 }
