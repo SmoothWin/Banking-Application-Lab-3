@@ -15,11 +15,11 @@ namespace BankingApplication
             GlobalSavingsAccount gsa = new GlobalSavingsAccount(5,0.05);
             
             
-            Console.WriteLine("Hello welcome to Champlain international bank...");
+            Console.WriteLine("Hello welcome to Champlain International Bank...");
             Console.WriteLine("Login to continue...");
             Console.Write("Username: ");
             string name = Console.ReadLine();
-            Console.Write("Password (enter random things this is just for fun): ");
+            Console.Write("Password (enter random things, this is just for fun): ");
             Console.ReadLine();
             Console.WriteLine("Hello " + name + "\nSelect an option within the menu you would like to interact with: ");
             bool exit = false;

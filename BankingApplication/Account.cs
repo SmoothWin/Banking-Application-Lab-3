@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -53,12 +54,53 @@ namespace BankingApplication
 
         }
 
+        public double PercentChange ()
+        {
+            double percentDifference = Math.Round(((Month_current_balance - Month_start_balance) / month_start_balance), 2);
+            return percentDifference;
+        }
+
+        public static string ToNAMoneyFormat(this double n, Boolean tf)
+        {
+            double theMoney=n;
+            if (tf == true)
+            {
+                if (theMoney < 0)
+                {
+                    theMoney *= -1;
+                    theMoney = Math.Round(n, 2, MidpointRounding.AwayFromZero); //Rounds the number accordingly
+                    string str = string.Format("({0:C})", theMoney);
+                    return str;
+                }
+                else
+                {
+                    theMoney = Math.Round(n, 2, MidpointRounding.AwayFromZero); //Rounds the number accordingly
+                    string str = string.Format("{0:C}", theMoney);
+                    return str;
+                }
+            }
+            else
+            {
+                if (theMoney < 0)
+                {
+                    theMoney *= 1;
+                    theMoney = Math.Round(n, 2); //Rounds the number downwards
+                    string str = string.Format("({0:C})", theMoney);
+                    return str;
+                }
+                else 
+                {
+                    theMoney = Math.Round(n, 2); //Rounds the number downwards
+                    string str = string.Format("{0:C}", theMoney);
+                    return str;
+                }
+            }
+        }
+
         public virtual string CloseAndReport()
         {
             month_current_balance -= month_service_charge;
             CalculateInterest();
-            double percentDifference = ((Month_current_balance - Month_start_balance) / month_start_balance);
-            string formattedPD = string.Format("{0:0.00}%", percentDifference*100);
 
             double month_interest_rate = (annual_interest_rate / 12);
             string formattedMIR = string.Format("{0:0.00}%", month_interest_rate*100);
@@ -67,12 +109,12 @@ namespace BankingApplication
 
             string balance = "Previous balance: " + string.Format("{0:C}", Month_start_balance) +
                 "\nNew balance: " + string.Format("{0:C}",Month_current_balance);
-            
-            string percent = "% difference between Previous and Present balance: "+formattedPD;
+
+            string percent = "% difference between Previous and Present balance: " + PercentChange();
 
             string interestPay = "Month's interest rate (" + formattedMIR + ") paid: " + formattedMI;
 
-            string monthservicecharge = "The monthly service charge paid: " + string.Format("{0:C}", month_service_charge);
+            string monthservicecharge = "The monthly service charge paid: " + month_service_charge.ToNAMoneyFormat(true);
 
             string str = string.Format("{0}\n{1}\n{2}\n{3}\n",balance,percent,interestPay,monthservicecharge);
 
