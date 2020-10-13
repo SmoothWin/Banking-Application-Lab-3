@@ -32,8 +32,8 @@ namespace BankingApplication
         }
         public override string CloseAndReport()
         {
-            month_service_charge += 5 + (0.10 * month_withdraws_count);
 
+            month_service_charge += 5 + (0.10 * month_withdraws_count);
             return base.CloseAndReport();
         }
     }
