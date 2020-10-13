@@ -434,10 +434,9 @@ namespace BankingApplication
                     Console.WriteLine("Try Again (A,B,C,Q)");
                 }
                 
-                
-
             }
         }
+       
         public static void WrongMenuChoice()
         {
             WrongMenuChoiceException ex = new WrongMenuChoiceException("Selected choice is invalid ","Wrong letter choice was chosen for selected menu.",DateTime.Now);
