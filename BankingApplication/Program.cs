@@ -21,7 +21,7 @@ namespace BankingApplication
             string name = Console.ReadLine();
             Console.Write("Password (enter random things this is just for fun): ");
             Console.ReadLine();
-            Console.WriteLine("Hello " + name + "\nSelect which Bank Menu you would like to interact with: ");
+            Console.WriteLine("Hello " + name + "\nSelect an option within the menu you would like to interact with: ");
             bool exit = false;
             bool innerExit = false;
             bool goodDeposit = false;
@@ -34,9 +34,9 @@ namespace BankingApplication
                     Console.WriteLine(" ___________________________");
                     Console.WriteLine("|         Bank Menu         |");
                     Console.WriteLine("|---------------------------|");
-                    Console.WriteLine("| A: Savings                |");
-                    Console.WriteLine("| B: Checking               |");
-                    Console.WriteLine("| C: Global Savings         |");
+                    Console.WriteLine("| A: Savings Account        |");
+                    Console.WriteLine("| B: Checking Account       |");
+                    Console.WriteLine("| C: Global Savings Account |");
                     Console.WriteLine("| Q: Exit                   |");
                     Console.WriteLine("|                           |");
                     Console.WriteLine("|___________________________|");
@@ -46,6 +46,8 @@ namespace BankingApplication
                     switch (letterAccount.Trim().ToLower())
                     {
                         case "a":
+                        case "savings":
+                        case "savings account":
                             while (innerExit == false)
                             {
                                 try
@@ -55,7 +57,7 @@ namespace BankingApplication
                                     Console.WriteLine("|---------------------------|");
                                     Console.WriteLine("| A: Deposit                |");
                                     Console.WriteLine("| B: Withdrawal             |");
-                                    Console.WriteLine("| C: Close + Report         |");
+                                    Console.WriteLine("| C: Close and Report       |");
                                     Console.WriteLine("| R: Return to Bank Menu    |");
                                     Console.WriteLine("|                           |");
                                     Console.WriteLine("|___________________________|");
@@ -168,6 +170,8 @@ namespace BankingApplication
                             }
                             break;
                         case "b":
+                        case "checking":
+                        case "checking account":
                             while (innerExit == false)
                             {
                                 try
@@ -179,7 +183,7 @@ namespace BankingApplication
                                     Console.WriteLine("|---------------------------|");
                                     Console.WriteLine("| A: Deposit                |");
                                     Console.WriteLine("| B: Withdrawal             |");
-                                    Console.WriteLine("| C: Close + Report         |");
+                                    Console.WriteLine("| C: Close and Report       |");
                                     Console.WriteLine("| R: Return to Bank Menu    |");
                                     Console.WriteLine("|                           |");
                                     Console.WriteLine("|___________________________|");
@@ -290,6 +294,9 @@ namespace BankingApplication
                             }
                             break;
                         case "c":
+                        case "global":
+                        case "global savings":
+                        case "global savings account":
                             while (innerExit == false)
                             {
                                 try
@@ -301,7 +308,7 @@ namespace BankingApplication
                                     Console.WriteLine("|---------------------------|");
                                     Console.WriteLine("| A: Deposit                |");
                                     Console.WriteLine("| B: Withdrawal             |");
-                                    Console.WriteLine("| C: Close + Report         |");
+                                    Console.WriteLine("| C: Close and Report       |");
                                     Console.WriteLine("| D: Report Balance in USD  |");
                                     Console.WriteLine("| R: Return to Bank Menu    |");
                                     Console.WriteLine("|___________________________|");
