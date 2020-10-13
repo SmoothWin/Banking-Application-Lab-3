@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BankingApplication
 {
-    class SavingsAccount : Account
+    class SavingsAccount : Account, IAccount
     {
         Status stat;
          public SavingsAccount(double balance,double interest_rate) : base(balance,interest_rate)
@@ -50,22 +50,21 @@ namespace BankingApplication
         {
             if (stat == Status.inactive)
             {
-                Console.WriteLine("You need to have more than $25 to be able to withdraw");
-                Console.WriteLine("Enter 0 to withdraw nothing");
+                Console.WriteLine("The account is inactive");
+                Console.WriteLine("In order to be able to withdraw, the account balance must be over $25");
             }
             else
             {
-                if ((Month_current_balance - amount) < 0)
-                {
-                    Console.WriteLine("Insufficient funds to withdraw");
-                }
-                else if (Month_current_balance - amount > 25)
+                 if (Month_current_balance - amount > 25)
                 {
                     base.MakeWithdraw(amount);
+                    Console.WriteLine("Successfully withdrawed " + string.Format("{0:C}", amount));
+
                 }
-                else if (Month_current_balance < 25 && Month_current_balance - amount > -1 )
+                else
                 {
                     base.MakeWithdraw(amount);
+                    Console.WriteLine("Successfully withdrawed " + string.Format("{0:C}", amount));
                     stat = Status.inactive;
                 }
             }

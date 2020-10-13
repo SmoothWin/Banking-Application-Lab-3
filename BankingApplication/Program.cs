@@ -36,7 +36,7 @@ namespace BankingApplication
                     Console.WriteLine("|---------------------------|");
                     Console.WriteLine("| A: Savings                |");
                     Console.WriteLine("| B: Checking               |");
-                    Console.WriteLine("| C: GlobalSavings          |");
+                    Console.WriteLine("| C: Global Savings         |");
                     Console.WriteLine("| Q: Exit                   |");
                     Console.WriteLine("|                           |");
                     Console.WriteLine("|___________________________|");
@@ -123,15 +123,9 @@ namespace BankingApplication
                                                     {
                                                         NegativeNumberError(); //No negative numbers
                                                     }
-                                                    else if (sa.Month_current_balance - withdraw < 0)
-                                                    {
-                                                        sa.MakeWithdraw(withdraw);
-                                                    }
-
                                                     else
                                                     {
                                                         sa.MakeWithdraw(Math.Round(withdraw, 2, MidpointRounding.ToEven));
-                                                        Console.WriteLine("Successfully withdrawed " + string.Format("{0:C}", withdraw));
                                                         goodWithdraw = true;
                                                     }
                                                 }
@@ -251,16 +245,10 @@ namespace BankingApplication
                                                     {
                                                         NegativeNumberError(); //No negative numbers
                                                     }
-                                                    else if (ca.Month_current_balance - withdraw < 0 && ca.Month_current_balance < 25)
-                                                    {
-                                                        ca.MakeWithdraw(withdraw);
-
-                                                    }
 
                                                     else
                                                     {
                                                         ca.MakeWithdraw(Math.Round(withdraw, 2, MidpointRounding.ToEven));
-                                                        Console.WriteLine("Successfully withdrawed " + string.Format("{0:C}", withdraw));
                                                         goodWithdraw = true;
                                                     }
                                                 }
@@ -378,15 +366,10 @@ namespace BankingApplication
                                                     {
                                                         NegativeNumberError(); //No negative numbers
                                                     }
-                                                    else if (gsa.Month_current_balance - withdraw < 0)
-                                                    {
-                                                        gsa.MakeWithdraw(withdraw);
-                                                    }
 
                                                     else
                                                     {
                                                         gsa.MakeWithdraw(Math.Round(withdraw, 2, MidpointRounding.ToEven));
-                                                        Console.WriteLine("Successfully withdrawed " + string.Format("{0:C}", withdraw));
                                                         goodWithdraw = true;
                                                     }
                                                 }

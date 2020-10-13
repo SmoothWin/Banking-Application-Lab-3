@@ -57,13 +57,6 @@ namespace BankingApplication
         {
             month_current_balance -= month_service_charge;
             CalculateInterest();
-            month_withdraws_count = 0;
-            month_deposit_count = 0;
-
-            month_total_withdraws = 0;
-            month_total_deposits = 0;
-
-            month_service_charge = 0;
             double percentDifference = ((Month_current_balance - Month_start_balance) / month_start_balance);
             string formattedPD = string.Format("{0:0.00}%", percentDifference*100);
 
@@ -79,7 +72,18 @@ namespace BankingApplication
 
             string interestPay = "Month's interest rate (" + formattedMIR + ") paid: " + formattedMI;
 
-            string str = string.Format("{0}\n{1}\n{2}\n",balance,percent,interestPay);
+            string monthservicecharge = "The monthly service charge paid: " + string.Format("{0:C}", month_service_charge);
+
+            string str = string.Format("{0}\n{1}\n{2}\n{3}\n",balance,percent,interestPay,monthservicecharge);
+
+            month_withdraws_count = 0;
+            month_deposit_count = 0;
+
+            month_total_withdraws = 0;
+            month_total_deposits = 0;
+
+            month_service_charge = 0;
+
             return str;
 
 
