@@ -133,7 +133,6 @@ namespace BankingApplication
                                                 {
                                                     Console.WriteLine(e.Message);
                                                     Console.WriteLine("Try Again");
-                                                    break;
                                                 }
                                                 catch (FormatException)
                                                 {
@@ -378,7 +377,6 @@ namespace BankingApplication
 
                                                     Console.WriteLine(e.Message);
                                                     Console.WriteLine("Try Again");
-                                                    break;
                                                 }
                                                 catch (FormatException)
                                                 {
