@@ -403,7 +403,7 @@ namespace BankingApplication
                                             Console.WriteLine(gsa.CloseAndReport());
                                             break;
                                         case "d":
-                                            Console.WriteLine("Total balance: " + string.Format("{0:C}", gsa.USValue(0.76)) + " USD");
+                                            Console.WriteLine("Total balance: " + gsa.USValue(0.76).ToNAMoneyFormatD(true) + " USD");
                                             break;
                                         case "r":
                                             innerExit = true;
