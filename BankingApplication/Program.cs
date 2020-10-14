@@ -10,9 +10,11 @@ namespace BankingApplication
     {
         static void Main(string[] args)
         {
+            // Creation of instances classes
             SavingsAccount sa = new SavingsAccount(5,0.05);
             CheckingAccount ca = new CheckingAccount(5,0.05);
             GlobalSavingsAccount gsa = new GlobalSavingsAccount(5,0.05);
+            
             
             
             Console.WriteLine("Hello welcome to Champlain International Bank...");
@@ -22,11 +24,13 @@ namespace BankingApplication
             Console.Write("Password (enter random things, this is just for fun): ");
             Console.ReadLine();
             Console.WriteLine("Hello " + name + "\nSelect an option within the menu you would like to interact with: ");
-            bool exit = false;
-            bool innerExit = false;
-            bool goodDeposit = false;
-            bool goodWithdraw = false;
+            bool exit = false; // loop break for Bank menu
+            bool innerExit = false; //loop break for Account menus
 
+            bool goodDeposit = false; //loop break for deposits
+            bool goodWithdraw = false; //loop break for withdraws
+
+            //Start of program loop
             while(exit == false) {
                 innerExit = false;
                 try
@@ -43,6 +47,7 @@ namespace BankingApplication
 
                     string letterAccount = Console.ReadLine();
                     string letterChoice;
+                    //Start of main switch statement
                     switch (letterAccount.Trim().ToLower())
                     {
                         case "a":
@@ -66,12 +71,15 @@ namespace BankingApplication
                                     letterChoice = Console.ReadLine();
 
 
-                                    goodDeposit = false;
-                                    goodWithdraw = false;
+                                    goodDeposit = false; // Resets the deposit loop to keep looping the next time we enter a bad value
+                                    goodWithdraw = false; // Resets the deposit loop to keep looping the next time we enter a bad value
+
+                                    //Start of switch statement for Savings menu
                                     switch (letterChoice.Trim().ToLower())
                                     {
                                         case "a":
                                         case "deposit":
+                                            //loop for deposit validation
                                             while (goodDeposit == false)
                                             {
                                                 try
@@ -88,7 +96,7 @@ namespace BankingApplication
                                                     {
                                                         sa.MakeDeposit(deposit.ToNAMoneyFormatD(true));
                                                         Console.WriteLine("Successfully deposited " + deposit.ToNAMoneyFormat(true));
-                                                        goodDeposit = true;
+                                                        goodDeposit = true; // Exit of loop allowed
                                                     }
                                                 }
                                                 catch (NegativeNumberException e)
@@ -113,6 +121,7 @@ namespace BankingApplication
                                             break;
                                         case "b":
                                         case "withdraw":
+                                            //loop for withdraw validation
                                             while (goodWithdraw == false)
                                             {
                                                 try
@@ -128,7 +137,7 @@ namespace BankingApplication
                                                     else
                                                     {
                                                         sa.MakeWithdraw(withdraw.ToNAMoneyFormatD(true));
-                                                        goodWithdraw = true;
+                                                        goodWithdraw = true; // Exit of loop allowed
                                                     }
                                                 }
                                                 catch (NegativeNumberException e)
@@ -161,6 +170,7 @@ namespace BankingApplication
                                             WrongMenuChoice();
                                             break;
                                     }
+                                    //End of switch statement for Savings menu
                                 }
                                 catch (WrongMenuChoiceException e)
                                 {
@@ -187,13 +197,16 @@ namespace BankingApplication
                                     Console.WriteLine("| R: Return to Bank Menu    |");
                                     Console.WriteLine("|                           |");
                                     Console.WriteLine("|___________________________|");
-                                    string balance = string.Format("{0:C}", ca.Month_current_balance);
+                                    string balance = ca.Month_current_balance.ToNAMoneyFormat(true);
                                     Console.WriteLine("Current Balance: " + balance);
                                     letterChoice = Console.ReadLine();
+                                    
+                                    //Start of switch statement for Checking Menu
                                     switch (letterChoice.Trim().ToLower())
                                     {
                                         case "a":
                                         case "deposit":
+                                            //loop for deposit validation
                                             while (goodDeposit == false)
                                             {
                                                 try
@@ -211,7 +224,7 @@ namespace BankingApplication
                                                     {
                                                         ca.MakeDeposit(deposit.ToNAMoneyFormatD(true));
                                                         Console.WriteLine("Successfully deposited " + deposit.ToNAMoneyFormat(true));
-                                                        goodDeposit = true;
+                                                        goodDeposit = true; // Exit of loop allowed
                                                     }
                                                 }
                                                 catch (NegativeNumberException e)
@@ -232,10 +245,10 @@ namespace BankingApplication
                                                     }
                                                 }
                                             }
-
                                             break;
                                         case "b":
                                         case "withdraw":
+                                            //loop for withdraw validation
                                             while (goodWithdraw == false)
                                             {
                                                 try
@@ -252,7 +265,7 @@ namespace BankingApplication
                                                     else
                                                     {
                                                         ca.MakeWithdraw(withdraw.ToNAMoneyFormatD(true));
-                                                        goodWithdraw = true;
+                                                        goodWithdraw = true; // Exit of inner-loop allowed
                                                     }
                                                 }
                                                 catch (NegativeNumberException e)
@@ -279,12 +292,13 @@ namespace BankingApplication
                                             Console.WriteLine(ca.CloseAndReport());
                                             break;
                                         case "r":
-                                            innerExit = true;
+                                            innerExit = true; // Exit of loop allowed
                                             break;
                                         default:
                                             WrongMenuChoice();
                                             break;
                                     }
+                                    //End of switch statement for Checking Menu
                                 }
                                 catch (WrongMenuChoiceException e)
                                 {
@@ -312,13 +326,16 @@ namespace BankingApplication
                                     Console.WriteLine("| D: Report Balance in USD  |");
                                     Console.WriteLine("| R: Return to Bank Menu    |");
                                     Console.WriteLine("|___________________________|");
-                                    string balance = string.Format("{0:C}", gsa.Month_current_balance);
+                                    string balance = gsa.Month_current_balance.ToNAMoneyFormat(true);
                                     Console.WriteLine("Current Balance: " + balance);
                                     letterChoice = Console.ReadLine();
+
+                                    //Start of switch statement for Global Savings menu
                                     switch (letterChoice.Trim().ToLower())
                                     {
                                         case "a":
                                         case "deposit":
+                                            //loop for deposit validation
                                             while (goodDeposit == false)
                                             {
                                                 try
@@ -360,6 +377,7 @@ namespace BankingApplication
                                             break;
                                         case "b":
                                         case "withdraw":
+                                            //loop for withdraw validation
                                             while (goodWithdraw == false)
                                             {
                                                 try
@@ -404,7 +422,7 @@ namespace BankingApplication
                                             Console.WriteLine(gsa.CloseAndReport());
                                             break;
                                         case "d":
-                                            Console.WriteLine("Total balance: " + string.Format("{0:C}", gsa.USValue(0.76)) + " USD");
+                                            Console.WriteLine("Total balance: " + gsa.USValue(0.76).ToNAMoneyFormat(true) + " USD");
                                             break;
                                         case "r":
                                             innerExit = true;
@@ -413,6 +431,7 @@ namespace BankingApplication
                                             WrongMenuChoice();
                                             break;
                                     }
+                                    //End of switch statement for Global Savings menu
                                 }
                                 catch (WrongMenuChoiceException e)
                                 {
@@ -428,7 +447,9 @@ namespace BankingApplication
                             WrongMenuChoice();
                             break;
                     }
-                }catch(WrongMenuChoiceException e)
+                    //End of main switch statement
+                }
+                catch (WrongMenuChoiceException e)
                 {
                     Console.WriteLine(e.Message);
                     Console.WriteLine("Try Again (A,B,C,Q)");
