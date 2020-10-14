@@ -28,7 +28,6 @@ namespace BankingApplication
             bool goodWithdraw = false;
 
             while(exit == false) {
-                innerExit = false;
                 try
                 {
                     Console.WriteLine(" ___________________________");
@@ -437,19 +436,19 @@ namespace BankingApplication
             }
         }
        
-        public static void WrongMenuChoice()
+        public static void WrongMenuChoice() //Handles the error for a wrong menu choice
         {
-            WrongMenuChoiceException ex = new WrongMenuChoiceException("Selected choice is invalid ","Wrong letter choice was chosen for selected menu.",DateTime.Now);
+            WrongMenuChoiceException ex = new WrongMenuChoiceException("Selected choice is invalid ","Wrong choice for selected menu. ",DateTime.Now);
             throw ex;
         }
-        public static void NegativeNumberError()
+        public static void NegativeNumberError() //Handles the error for negative number input
         {
-            NegativeNumberException ex = new NegativeNumberException("Invalid currency amount ","Number goes against withdrawal system.",DateTime.Now);
+            NegativeNumberException ex = new NegativeNumberException("Invalid amount ","Number goes against withdrawal numeral system.",DateTime.Now);
             throw ex;
         }
-        public static double NotNumberError()
+        public static double NotNumberError() //Handles the error for anything that is not a number
         {
-            NotNumberException ex = new NotNumberException("Invalid value for currency", "The input needs to be a currency type value.", DateTime.Now);
+            NotNumberException ex = new NotNumberException("Invalid value", "The input needs to be a numeral type value.", DateTime.Now);
             throw ex;
         }
     }
