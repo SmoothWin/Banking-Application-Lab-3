@@ -40,7 +40,7 @@ namespace BankingApplication
                 }
             }
         }
-        public static double ToNAMoneyFormatD (this double n, Boolean tf) //Added this extension method in order to be able to round nicely all the numbers going in the system so there isn't any discepancies
+        public static double ToNAMoneyFormatD (this double n, Boolean tf) //Added this extension method in order to be able to round nicely all the numbers going in the system so there isn't any discrepancies
         {
             double theMoney = n * 100;
             if (tf == true)
