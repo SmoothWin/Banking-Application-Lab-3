@@ -10,18 +10,18 @@ namespace BankingApplication
     {
         public static string ToNAMoneyFormat(this double n, Boolean tf)
         {
-            double theMoney = n;
+            double theMoney = n*100;
             if (tf == true)
             {
                 if (theMoney < 0)
                 {
                     theMoney *= -1; 
-                    string str = string.Format("({0:C})", Decimal.Ceiling((decimal) theMoney)); //Rounds the number accordingly
+                    string str = string.Format("({0:C})", (Decimal.Ceiling((decimal) theMoney))/100); //Rounds the number accordingly
                     return str;
                 }
                 else
                 {
-                    string str = string.Format("{0:C}", Decimal.Ceiling((decimal)theMoney)); //Rounds the number accordingly
+                    string str = string.Format("{0:C}", (Decimal.Ceiling((decimal)theMoney)) / 100); //Rounds the number accordingly
                     return str;
                 }
             }
@@ -29,14 +29,46 @@ namespace BankingApplication
             {
                 if (theMoney < 0)
                 {
-                    theMoney *= -1; //Rounds the number downwards
-                    string str = string.Format("({0:C})", Decimal.Floor((decimal)theMoney));
+                    theMoney *= -1; 
+                    string str = string.Format("({0:C})", (Decimal.Floor((decimal)theMoney)) / 100); //Rounds the number downwards
                     return str;
                 }
                 else
                 { 
-                    string str = string.Format("{0:C}", Decimal.Floor((decimal)theMoney)); //Rounds the number downwards
+                    string str = string.Format("{0:C}", (Decimal.Floor((decimal)theMoney)) / 100); //Rounds the number downwards
                     return str;
+                }
+            }
+        }
+        public static double ToNAMoneyFormatD (this double n, Boolean tf)
+        {
+            double theMoney = n * 100;
+            if (tf == true)
+            {
+                if (theMoney < 0)
+                {
+                    theMoney *= -1;
+                    decimal d = (Decimal.Ceiling((decimal)theMoney)) / 100; //Rounds the number accordingly
+                    return ((double) d);
+                }
+                else
+                {
+                    decimal d =  (Decimal.Ceiling((decimal)theMoney)) / 100; //Rounds the number accordingly
+                    return ((double) d);
+                }
+            }
+            else
+            {
+                if (theMoney < 0)
+                {
+                    theMoney *= -1;
+                    decimal d = (Decimal.Floor((decimal)theMoney)) / 100; //Rounds the number downwards
+                    return ((double) d);
+                }
+                else
+                {
+                    decimal d = (Decimal.Floor((decimal)theMoney)) / 100; //Rounds the number downwards
+                    return ((double) d);
                 }
             }
         }

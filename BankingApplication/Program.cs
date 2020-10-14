@@ -86,7 +86,7 @@ namespace BankingApplication
                                                     }
                                                     else
                                                     {
-                                                        sa.MakeDeposit(Math.Round(deposit,2,MidpointRounding.AwayFromZero));
+                                                        sa.MakeDeposit(deposit.ToNAMoneyFormatD(true));
                                                         Console.WriteLine("Successfully deposited " + deposit.ToNAMoneyFormat(true));
                                                         goodDeposit = true;
                                                     }
@@ -127,7 +127,7 @@ namespace BankingApplication
                                                     }
                                                     else
                                                     {
-                                                        sa.MakeWithdraw(Math.Round(withdraw, 2, MidpointRounding.AwayFromZero));
+                                                        sa.MakeWithdraw(withdraw.ToNAMoneyFormatD(true));
                                                         goodWithdraw = true;
                                                     }
                                                 }
@@ -209,8 +209,8 @@ namespace BankingApplication
                                                     }
                                                     else
                                                     {
-                                                        ca.MakeDeposit(Math.Round(deposit, 2, MidpointRounding.AwayFromZero));
-                                                        Console.WriteLine("Successfully deposited " + string.Format("{0:C}", deposit));
+                                                        ca.MakeDeposit(deposit.ToNAMoneyFormatD(true));
+                                                        Console.WriteLine("Successfully deposited " + deposit.ToNAMoneyFormat(true));
                                                         goodDeposit = true;
                                                     }
                                                 }
@@ -251,7 +251,7 @@ namespace BankingApplication
 
                                                     else
                                                     {
-                                                        ca.MakeWithdraw(Math.Round(withdraw, 2, MidpointRounding.AwayFromZero));
+                                                        ca.MakeWithdraw(withdraw.ToNAMoneyFormatD(true));
                                                         goodWithdraw = true;
                                                     }
                                                 }
@@ -333,8 +333,8 @@ namespace BankingApplication
                                                     }
                                                     else
                                                     {
-                                                        gsa.MakeDeposit(Math.Round(deposit, 2, MidpointRounding.AwayFromZero));
-                                                        Console.WriteLine("Successfully deposited " + string.Format("{0:C}", deposit));
+                                                        gsa.MakeDeposit(deposit.ToNAMoneyFormatD(true));
+                                                        Console.WriteLine("Successfully deposited " + deposit.ToNAMoneyFormat(true));
                                                         goodDeposit = true;
                                                     }
                                                 }
@@ -375,7 +375,7 @@ namespace BankingApplication
 
                                                     else
                                                     {
-                                                        gsa.MakeWithdraw(Math.Round(withdraw, 2, MidpointRounding.AwayFromZero));
+                                                        gsa.MakeWithdraw(withdraw.ToNAMoneyFormatD(true));
                                                         goodWithdraw = true;
                                                     }
                                                 }
